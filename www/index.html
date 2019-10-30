@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta charset="utf-8">
+  <title>blue</title>
+</head>
+  <body>
+  <style>
+  .text {
+  background-color: #e7e7e7;
+  color: black;
+  }
+  </style>
+  <body bgcolor="blue">
+  <input type="button" value="Is there anything you wanted your mother to tell you but she never did? " onclick="save('hi')">
+  <input type="text">
+  <br>
+  <input type="button" value="Is there anything you wanted your father to tell you but he never did? " onclick="save('hi')">
+  <input type="text">
+  <br>
+  <input type="button" value="From 1 to 10, how engaged do you think you are with these questions?" onclick="save('hi')">
+  <input type="text">
+  <br>
+  <input type="button" value="Is there anything you ever wished to say to me?" onclick="save('hi')">
+  <input type="text">
+  <br>
+  <input type="button" value="Do you ever look for something?" onclick="save('hi')">
+  <input type="text">
+  <br>
+  <input type="button" value="Have you ever found anything?" onclick="save('hi')">
+  <input type="text">
+  <br>
+  <input type="button" value="Coffee or tea?" onclick="save('hi')">
+  <input type="text">
+  <br>
+  <script>
+  async function save(e,i){
+    if(typeof e.target!=='undefined'){
+      let t=inputs[i]
+      //console.log(e.target.value, i, t.value)
+      const res = await fetch(`http://10.73.26.255/answer?q=${e.target.value}&a=${t.value}`)
+      const text= await res.text()
+      //console.log(text)
+      t.value=""
+    }
+  }
+
+  const buttons=document.querySelectorAll('input[type="button"]')
+  const inputs=document.querySelectorAll('input[type="text"]')
+  for (let i=0; i<buttons.length; i++){
+    let b=buttons[i]
+    b.addEventListener('click', (e)=>save(e,i))
+  }
+  </script>
+  <!-- command+slash comments out in atom -->
+  <!-- command+d highlights same things-->
+  <!-- When someone writes something and the button is pressed, I want it to 'alert' the time. -->
+  <!-- I also want that time to be saved on a doc with the message someone typed in. -->
+  <!-- Could I also display it on another page as answers accumulate? Like just showing the doc in real time. -->
+  </body>
+</html>
