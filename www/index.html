@@ -38,8 +38,7 @@
     if(typeof e.target!=='undefined'){
       let t=inputs[i]
       //console.log(e.target.value, i, t.value)
-      // const res = await fetch(`http://10.73.41.80/answer?q=${e.target.value}&a=${t.value}`)
-      const res = await fetch(`/answer ? q=${e.target.value} & a=${t.value}`);
+      const res = await fetch(`http://22.22.22.22/answer?q=${e.target.value}&a=${t.value}`);
       const text= await res.text()
       //console.log(text)
       t.value=""
