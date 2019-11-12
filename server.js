@@ -23,6 +23,10 @@ app.get('/answer', (req, res)=> {
   res.send('thanks')
 })
 
+app.get('/00009', (req, res)=>{
+  res.json(database)
+})
+
 // now we're ready to start listening for requests using our server's `listen()` method (very similar to our last example)
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}, CTRL + C to shutdown`)
